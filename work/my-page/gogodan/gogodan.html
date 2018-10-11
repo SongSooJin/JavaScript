@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gugudan</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+	body{
+		margin-top: 30px;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<h3>Gugudan</h3><br>
+		<form action="#">
+			<label for="num1">숫자1</label>
+			<input type="number" min="1" max="20" id="num1" placeholder="1~20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="num2">숫자2</label>
+			<input type="number" min="1" max="20" id="num2" placeholder="1~20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="button" onclick="buttonClicked()" class="btn btn-primary" style="color:yellow">출력하기</button>
+		</form>
+		<br>
+		<table class="table table-striped">
+			<thead id="thead">
+			</thead>
+			<tbody id="tbody">
+			</tbody>
+		</table>
+		</div>
+		<script src="Gugudan.js"></script>
+		</body>
+		</html>

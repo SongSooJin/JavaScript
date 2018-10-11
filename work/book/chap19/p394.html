@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- 
+  Polyfill: 
+  원래는 그런 자원(프로퍼티)이 없는데 라이브러리를 임포트하면
+  라이브러리 코드가 작동하면서 동적으로 전역객체 또는 이미 존재하는
+  객체를 대상으로 기능을 업그레이드 하거나 새 기능을 추가하는 기법을 말한다.
+    -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    // window : 브라우저 자바스크립트 컴파일러가 제공하는
+    // 화면관련정보를 취급하는 전역객체이다.
+    // console.log(window);
+    console.log(window.document === document); // true
+    
+    console.log($ === window.jQuery); // true
+    console.log($ === jQuery); // true
+    
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

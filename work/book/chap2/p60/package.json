@@ -1,0 +1,14 @@
+{
+  "name": "p60",
+  "version": "1.0.0",
+  "description": "npm install 설치대상 프로그램 -옵션\r -g : 설치대상 프로그램을 전역적으로 설치하라.나중에 콘솔에 해당 프로그램을 사용할 수 있게 된다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Song Soo Jin",
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "^1.9.1"
+  }
+}

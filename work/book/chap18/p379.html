@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  
+  <button data-action="highlight" data-containing="unique">
+     Highlight paragraphs containing "unique"
+  </button>
+  <button data-action="removeHighlights">
+     Remove highlights
+  </button>
+
+  <!-- <input type="number" name="">
+  <input type="email" name="" value="11">
+  <input type="email" name="" value="22"> -->
+
+
+<script type="text/javascript">
+
+  const highlightActions = document.querySelectorAll('[data-action="highlight"]');
+  
+  // const highlightActions = document.querySelectorAll('[value="11"]'); // [] 속성울 뜻함 
+  
+  console.log(highlightActions[0].dataset); // dataset : 출력하라 
+  // DOMStringMap {
+  //   action : "highlight",
+  //   containing : "unique",
+  // __proto__ : DOMStringMap
+  // }
+  
+  highlightActions[0].dataset.containing = "giraffe";
+  highlightActions[0].dataset.caseSensitive = "true";
+
+</script>
+
+
+
+</body>
+
+</html>

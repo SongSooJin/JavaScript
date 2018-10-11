@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  
+  
+  <p onclick="btnClick(event)">111</p>
+  <p onclick="btnClick2(this)">222</p>
+  
+  <button type="button">333</button>
+  <button type="button">444</button>
+  <button type="button">555</button>
+  <br>
+  
+  
+  <script type="text/javascript">
+
+    function btnClick(e){
+      console.log(e);      
+      alert(e.target.innerHTML);
+    }
+    
+    function btnClick2(elem){
+      console.log(elem);      
+      alert(elem.innerHTML);
+    }
+    
+    var buttons = document.querySelectorAll("button");
+  
+    for (var button of buttons) {
+      button.addEventListener("click", function (e) { 
+      alert(e.target.innerHTML);
+      });
+    }
+    
+    
+  </script>
+</body>
+
+</html>

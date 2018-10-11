@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("p").append('<sup>*</sup>');
+
+      // 제이쿼리 함수들은 함수로직을 수행한 후
+      // 제이쿼리 객체를 리턴하므로, 기호로 연속해서 
+      // 메소드를 호출할 수 있다. method chaining
+      $('h3')
+        .after('<hr>')
+        .before('<hr>');
+      // sup 엘리먼트를 생성한 후,
+      $('<sup>*</sup>').appendTo('h3'); // equivalent to $('p').append('<sup>*</sup>')
+      $('<hr>').insertBefore('h3'); // equivalent to $('p').before('<hr>')
+      $('<hr>').insertAfter('h3'); // equivalent to $('p').after('<hr>');  
+    });
+  </script>
+</head>
+
+<body>
+  <h3>example</h3>
+  <p>111</p>
+  <p>222</p>
+  <div class="">
+    <p>33<sup>44</sup></p>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Job</th>
+        </tr>
+      </thead>
+      <tbody id="target">
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="serverInfo">
+    Server is running on <span data-replace="platform">???</span>
+    with Node <span data-replace="nodeVersion">???</span>. It has
+    been up for <span data-replace="uptime">???</span> seconds.
+  </div>
+
+  <script type="text/javascript">
+    
+    var tbody = document.getElementById("target");
+    
+    function renderTable(users) {
+      var html = "";
+      for (var i = 0; i < users.length; i++) {
+        var user = users[i];
+        html += `
+        <tr>
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>${user.job}</td>
+        </tr>
+        `;
+      }
+      tbody.innerHTML = html;
+    }
+
+
+    function refreshServerInfo() {
+      const req = new XMLHttpRequest();
+      req.addEventListener('load', function() {
+        // 그냥 주석
+        // FIXME : 버그가 있다. 바로 고쳐야 한다.
+        // XXX : 중요 하다.
+        // TODO: 작업내용, HTML에 내용을 표시해야 한다.
+        console.log(this.responseText);
+        console.log(typeof this.responseText);
+        var users = JSON.parse(this.responseText);
+        console.log(typeof users);
+
+        renderTable(users);
+      });
+      req.open('GET', 'http://localhost:3000/users', true);
+      req.send();
+    }
+    refreshServerInfo();
+    
+  
+  </script>
+
+</body>
+
+</html>

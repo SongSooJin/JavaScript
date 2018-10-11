@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="1.js" charset="utf-8"></script>
+
+
+</head>
+
+<body>
+  <div class="containaer">
+    <h3>To-do List</h3>
+
+    <div class="">
+      <label for="title"> 새 항목 </label>
+      <input type="text" id="inputTitle" value="">
+      <button type="button" id="buttonAdd" onclick=""> 추가 </button>
+    </div>
+
+    <br>
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Title</th>
+          <th>Menu</th>
+        </tr>
+      </thead>
+
+      <tbody id="target">
+        <!-- <tr>
+            <td> 1 </td>
+            <td> 아내에게 선물 사주기 </td>
+            <td> 
+            <button type="button" > 완료 </button>
+            <button type="button" > 삭제 </button>
+            </td>
+          </tr> -->
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <script type="text/javascript">
+    var buttonAdd = document.getElementById("buttonAdd");
+    var inputTitle = document.getElementById("inputTitle");
+    var target = document.getElementById("target");
+
+    function buttonDone(id) {
+      // alert(id + "Done");
+      // #a함수 호출
+      // text-decoration : line - through
+      doneTodo(id);
+      init();
+    }
+
+    function buttonDelete(id) {
+      // alert(id + "Delete");
+      delTodo(id);
+      init();
+    }
+
+
+
+    function init() {
+      var todos = getTodos();
+      var html = "";
+      target.innerHTML = "";
+      
+      for (var i = 0; i < todos.length; i++) {
+        var todo = todos[i];
+        if (todo.done) {
+          html =
+            `
+          <tr>
+            <td><del> ${todo.id} </del></td>
+            <td><del> ${todo.title} </del></td>
+            <td> 
+            <button type="button"  id="buttonDone" onclick="buttonDone(${todo.id})"> 완료 </button>
+            <button type="button" id="buttonDelete" onclick="buttonDelete(${todo.id})"> 삭제 </button>
+            </td>
+          </tr>
+          `;
+        }
+        else{
+         html = `
+         <tr>
+           <td>${todo.id}</td>
+           <td>${todo.title}</td> 
+           <td>
+             <button type="button" id="buttonDone" onclick="buttonDone(${todo.id})">완료</button>
+             <button type="button" id="buttonDelete" onclick="buttonDelete(${todo.id})">삭제</button>
+           </td>
+         </tr>
+         `;
+       }
+         target.innerHTML += html;
+      }
+    };
+
+    init();
+
+    buttonAdd.addEventListener("click", function() {
+      var title = inputTitle.value;
+      // alert(title);
+
+      // console.log(todos);
+      addTodo(title);
+      // console.log(todos);
+      init();
+    });
+  </script>
+
+</body>
+
+</html>

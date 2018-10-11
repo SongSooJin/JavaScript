@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <style media="screen">
+    .blue {
+        color: blue;
+      }
+    </style>
+
+</head>
+
+<body>
+  <p class="light center">1111</p>
+  <p name="second">2222</p>
+  <p class="light">3333</p>
+  <p id="unique">4444</p>
+  <p name="second">5555</p>
+
+
+  <script type="text/javascript">
+  
+    // var elems = document.getElementsByTagName("p");
+    var elems = document.querySelectorAll("p");
+    
+    for (var prop in elems) {
+      if (elems.hasOwnProperty(prop)) {
+        elems[prop].innerHTML = "777";
+      }
+    }
+    
+    // var elems = document.getElementsByClassName("light");
+    var elems = document.querySelectorAll(".light");
+    
+    for (var prop in elems) {
+      if (elems.hasOwnProperty(prop)) {
+        elems[prop].innerHTML = "777";
+      }
+    }
+    
+    // var target = document.getElementById("unique");
+    var target = document.querySelectorAll("#unique");
+    
+    
+  </script>
+</body>
+
+</html>

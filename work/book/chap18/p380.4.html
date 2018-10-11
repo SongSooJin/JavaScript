@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body {
+        background-image: url("이승우.jpg");
+      }
+    
+      div {
+        
+        width: 200px; 
+        height: 200px; 
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body onclick="clickBody()">
+    <div onclick="clickDiv(event)"></div>
+
+    <script type="text/javascript">
+      function clickBody() {
+        alert("clickBody");
+      }
+      function clickDiv(e) {
+        console.log(e);
+        alert("clickDiv");
+        e.stopPropagation(); // stopPropagation() 상위 이벤트 차단 
+      }
+    </script>
+  </body>
+
+</html>

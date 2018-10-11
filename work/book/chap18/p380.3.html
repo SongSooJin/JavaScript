@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title>preventDefault 예제</title>
+
+  <script type="text/javascript">
+    function stopDefAction(evt) {
+      if (!document.querySelectorAll("#txt").value) {
+        evt.preventDefault();
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <p>체크박스 컨트롤을 클릭해 주세요</p>
+
+  <form action="https://www.naver.com/" onsubmit="stopDefAction(event)">
+    <!-- <input type="checkbox" onclick="stopDefAction(event);"/>
+    <label for="checkbox">체크박스</label> -->
+    <input type="text" id="txt">
+    <button type="submit">send</button>
+  </form>
+
+</body>
+
+</html>

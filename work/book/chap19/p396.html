@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  
+    $(function() {
+      
+      const pTags = document.querySelectorAll("p");
+      // 관습적으로 jQuery함수를 통해 획득한 엘리먼트 참조값을 
+      // 취급하는 변수앞에 $기호를 쓴다.
+      const $paras = $('p'); // 태그명이 p인걸 찾아주세요 
+      console.log(pTags[0] === $paras[0]);
+      
+      console.log($paras.length); // number of paragraph tags matched
+      console.log(typeof pTags); // "object"
+      console.log(typeof $paras); // "object"
+      console.log($paras instanceof HTMLCollection); // false
+      console.log(pTags instanceof HTMLCollection); // false
+      console.log(document.getElementsByTagName("p") instanceof HTMLCollection);
+      
+      // $paras 객체는 상속관계에 의해서 $.prototype 이 제공하는 
+      // 자원을 사용할수 있다.
+      console.log($paras instanceof $);   // true
+      console.log($paras instanceof jQuery); // true
+  
+      console.log(Reflect.ownKeys($.prototype));
+
+      // const $newPara = document.createElement("p");
+      // newPara.textContent = "Newly created paragraph...";
+      // 위의 코드와 같음
+      const $newPara = $('<p>Newly created paragraph...</p>');
+      
+      $('p').text('ALL PARAGRAPHS REPLACED');
+      $('p').html('<i>ALL</i> PARAGRAPHS REPLACED');
+
+      $('p') // matches all paragraphs
+       .eq(1) // third paragraph (zero-based indices)
+       .html('<i>THIRD</i> PARAGRAPH REPLACED');
+       
+      $('p').remove();
+      
+    });
+    
+    
+  </script>
+
+</head>
+
+<body>
+  
+<h3>111</h3>
+<p>222</p>
+<div class="container">
+  <p>333</p>
+</div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <style media="screen">
+    .blue {
+        color: blue;
+      }
+    </style>
+
+</head>
+
+<body>
+  <p class="light center">1111</p>
+  <p name="second">2222</p>
+  <p class="light">3333</p>
+  <p id="unique">4444</p>
+  <p name="second">5555</p>
+
+
+  <script type="text/javascript">
+  
+  
+    var elems = document.getElementsByTagName("p");
+    
+    console.log(Array.isArray(elems)); // false
+    console.log(elems instanceof HTMLCollection); // true
+    console.log(elems);
+
+    // for (var i = 0; i < elems.length; i++) {
+    //   elems[i].innerHTML = "555";
+    // }
+
+    for (var prop in elems) {
+      if (elems.hasOwnProperty(prop)) {
+        elems[prop].innerHTML = "777";
+      }
+    }
+
+    var elems = document.getElementsByClassName("light");
+    console.log(elems.length);
+
+    // Array, HTMLCollection 객체는 이미
+    // Iteration 규약이 적용되어서 for-of 문을 사용할수 있다.
+    for (let elem of elems) {
+      // elem.classList = "blue red";
+      elem.classList.add("blue");
+      
+    }
+    
+    var target = document.getElementById("unique");
+    target.style = "font-size: 200%";
+    
+    
+    var elems = document.getElementsByName('second')
+    elems["0"].style = "font-size: 300%";
+    
+    
+    
+  </script>
+</body>
+
+</html>

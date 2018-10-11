@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"
+  integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
+  crossorigin="anonymous"></script>
+  <style media="screen">
+    .error {
+      border: 1px solid red;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="serverInfo"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Job</th>
+        </tr>
+      </thead>
+      <tbody id="target">
+
+      </tbody>
+    </table>
+  </div>
+
+  <script type="text/javascript">
+    var tbody = document.getElementById('target');
+  
+    function renderTable(users) {
+      var html = '';
+      for (var i = 0; i < users.length; i++) {
+        var user = users[i];
+        html += `
+          <tr>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.job}</td>
+          </tr>`
+      }
+      tbody.innerHTML = html;
+    }
+    // function refreshServerInfo() {
+    //   const req = new XMLHttpRequest();
+    //   req.addEventListener('load', function() {
+    //     console.log(this.responseText);
+    //     console.log(typeof this.responseText);
+    //     var users = JSON.parse(this.responseText);
+    //     console.log(typeof users);
+    // 
+    //     renderTable(users);
+    //   });
+    //   req.open('GET', 'http://localhost:3000/users', true);
+    //   req.send();
+    // }
+    
+    function refreshServerInfo() {
+      // <div class="serverInfo"></div>
+      const $serverInfo = $('.serverInfo');
+      
+      // 제이쿼리가 제공하는 AJAX 기술 함수중에 하나
+      // 객체.then 이런 코드를 보시면 객체 promise라고 보자!
+      $.get('http://localhost:3000/users').then(
+        function(data) { // 성공 콜백
+          console.log(data);
+          console.log(typeof data); // object
+          
+          renderTable(data);
+        },
+        function(jqXHR, textStatus, err) { // 실패 콜백
+          console.error(jqXHR);
+          console.error(textStatus);
+          console.error(err);
+          
+          // <div class="serverInfo" class="error"></div>
+          $serverInfo.addClass('error')
+              .html('Error connecting to server.');
+        }
+      );
+    }
+    
+    refreshServerInfo();
+  </script>
+
+</body>
+
+</html>
