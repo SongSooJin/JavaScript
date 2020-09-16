@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ROCK_SCISSORS_PAPER</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        #computer {
+            width:300px;
+            height: 300px;
+        }
+        #computer img {
+            width:100%;
+        }
+        #computer li {
+            display: none;
+        }
+        #computer li:nth-child(1) {
+            display: block;
+        }
+        #human {
+            width:300px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #human li {
+            width:80px;
+            display: inline-block;
+        }
+        #human img {
+            width:100%;
+        }
+        .gameWrap {
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            padding:50px 0;
+        }
+        .game {
+            width:300px;
+            margin: auto;
+        }
+        #result {
+            margin-top: 100px;
+        }
+        #result span {
+            display: inline-block;
+            width:30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin: 0 5px;
+            border-radius: 100px;
+            box-shadow: 3px 3px 3px rgba(0,0,0,0.1);
+            color:#fff;
+        }
+        .draw {background-color: #eee;}
+        .winner {background-color: rgb(6, 143, 197);}
+        .loser {background-color: rgb(253, 41, 33);}
+    </style>
+</head>
+<body>
+    <div class="gameWrap">
+        <h1>ROCK , SCISSORS , PAPER</h1>
+        <div class="game">
+            <ul id="computer">
+                <li><img src="images/rock.svg" alt=""></li>
+                <li><img src="images/scissors.svg" alt=""></li>
+                <li><img src="images/paper.svg" alt=""></li>
+            </ul>
+            <ul id="human">
+                <li><img src="images/rock.svg" alt=""></li>
+                <li><img src="images/scissors.svg" alt=""></li>
+                <li><img src="images/paper.svg" alt=""></li>
+            </ul>
+        </div>
+        <div id="result">
+            <!-- <span class="winner">W</span>
+            <span class="loser">L</span>
+            <span class="draw">D</span> -->
+        </div>
+    </div>
+    <script>
+        
+        // 더이상 돌아가지않고 승패 추출 하기 
+
+        let makeComChoice = function() {
+            sel = Math.floor( Math.random()*3);  
+
+           let computer = document.querySelector("#computer");
+           let comlist = document.querySelectorAll("#computer li");
+
+           // console.log(comlist); 
+           comlist[0].style.display="none";
+           comlist[1].style.display="none";
+           comlist[2].style.display="none";
+           comlist[sel].style.display="block";
+        }
+
+        const GAME_ING = "ing";
+        const GAME_END = "end";
+        const DELAY_TIME = 1000;
+        const GAME_TOTAL = 5;
+        let gameCount = 0;
+        let sel=0;
+        let clearID = setInterval(makeComChoice,20);
+        let humanList = document.querySelectorAll("#human li");
+        let reset = document.querySelector("#result");
+        let gameState=GAME_ING;
+
+        for(let i=0; i<3; i++) {
+            humanList[i].addEventListener("click", function () {
+               if(gameCount < GAME_TOTAL) {
+                if(gameState === GAME_ING) {
+                    gameState = GAME_END;
+
+                    clearInterval(clearID);
+                    setTimeout(function() {
+                        clearID = setInterval(makeComChoice,20);
+                        gameState = GAME_ING;
+                          
+                    },DELAY_TIME);
+              
+                    if (sel === i) {
+                        result.innerHTML += '<span class="draw">D</span>'; 
+                        // console.log("비김");  
+                    } else if (sel === 0 && i === 2 || sel ==1 && i===0 || sel===2 && i=== 1 ) {
+                        result.innerHTML += '<span class="winner">W</span>'; 
+                        // console.log("이김");
+                    } else {
+                        result.innerHTML += '<span class="loser">L</span>';
+                        // console.log("짐");
+                    }
+
+
+                } 
+                    gameCount++;
+                }
+            }); 
+
+        }
+
+        
+
+     
+
+         
+
+
+        // console.log("TCL: humanList", humanList)
+        
+    </script>
+</body>
+</html>

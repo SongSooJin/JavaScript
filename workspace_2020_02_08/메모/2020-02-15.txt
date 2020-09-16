@@ -1,0 +1,5 @@
+2020.02.15 두번째 수업
+
+postCSS sorting - css순서 맞춰주는 기능
+spliting js - 글자 쪼개주는 기능
+https://scrollmagic.io/
