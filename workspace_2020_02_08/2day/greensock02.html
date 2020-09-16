@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/splitting-cells.css">
+    <style>
+        #msg {
+            font-size: 36px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height : 100px;
+            border-radius: 10px;
+            display: inline-block;    
+            }
+
+        #red { background-color:  #f00;}
+        #green { background-color: green;}
+        #blue { background-color:  blue;}
+    </style>
+    <script src="js/splitting.min.js"></script>
+    <script src = "js/greensock/gsap.min.js"></script>
+</head>
+<body>
+    <p id="msg" data-splitting>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi, repudiandae.
+    </p>
+
+
+    <div class="boxrap">
+        <div class="box" id="red">RED</div>
+        <div class="box" id="green">GREEN</div>
+        <div class="box" id="blue">BLUE</div>
+    </div>
+
+
+
+    <script>
+        Splitting();
+
+        let timeline = gsap.timeline();
+
+        timeline.from("#msg .word", {
+            opacity:0,
+            scale:0,
+            stagger: {
+                amount:1.5,
+            }
+        })
+        .from(".box", {
+            duration:1,
+            scale:0,
+            stagger:{
+                amount:0.3,
+            },
+            ease:"power3.out", // power 1~4, elastic, bounce, back
+        },"-=1"); // 1: 절대시간 위에 실행 동시에 아래 호출 / -=1 : 상대시간 : 앞에 끝나는시간 1초전에 시작
+
+    </script>
+    
+    
+</body>
+</html>
