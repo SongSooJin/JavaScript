@@ -9,6 +9,6 @@
   "author": "Song Soo Jin",
   "license": "MIT",
   "dependencies": {
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   }
 }
